@@ -22,25 +22,27 @@
 
 import UIKit
 
-class HSBubblePresesntTransition: NSObject, UIViewControllerAnimatedTransitioning {
+open class HSBubblePresesntTransition: NSObject {
     
     private let originFrame: CGRect
     private let originBackgoroundColor: UIColor
     private let animationDuration:Double
     
     
-    init(originFrame:CGRect, originBackgroundColor: UIColor, animationDuration: Double) {
+    public init(originFrame:CGRect, originBackgroundColor: UIColor, animationDuration: Double) {
         self.originFrame = originFrame
         self.originBackgoroundColor = originBackgroundColor
         self.animationDuration = animationDuration
     }
+}
+
+extension HSBubblePresesntTransition: UIViewControllerAnimatedTransitioning {
     
-    
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return self.animationDuration
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to),
             let snapshot:UIView = UIView.init() else {

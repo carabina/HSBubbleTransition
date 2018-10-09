@@ -23,24 +23,26 @@
 
 import UIKit
 
-class HSBubbleDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
+open class HSBubbleDismissTransition: NSObject {
 
     private let destinationFrame: CGRect
     private let destinationBackgroundColor: UIColor
     private let animationDuration: Double
     
-    init(destinationFrame: CGRect, destinationBackgroundColor: UIColor, animationDuration: Double) {
+    public init(destinationFrame: CGRect, destinationBackgroundColor: UIColor, animationDuration: Double) {
         self.destinationFrame = destinationFrame
         self.destinationBackgroundColor = destinationBackgroundColor
         self.animationDuration = animationDuration
     }
+}
+
+extension HSBubbleDismissTransition: UIViewControllerAnimatedTransitioning {
     
-    
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+   public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return self.animationDuration
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+   public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from),
             let toVC = transitionContext.viewController(forKey: .to),
             let snapshot:UIView = UIView.init()
