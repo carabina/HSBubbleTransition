@@ -48,7 +48,7 @@ extension ViewController:UIViewControllerTransitioningDelegate {
 
 
 ### Demo App link 
-![](https://github.com/harshsrivastavaglobussoft/HSBubbleTransitionDemo.git)
+https://github.com/harshsrivastavaglobussoft/HSBubbleTransitionDemo.git
 
 ### Requirement 
 XCode 9.4 +
